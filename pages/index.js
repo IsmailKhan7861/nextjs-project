@@ -9,29 +9,38 @@ const DUMMY_MEETUPS = [
     description: "First Meetup",
   },
   {
-    id: 1,
+    id: 2,
     title: "First Meetup",
     image: "https://picsum.photos/200",
     address: "New York 123 ",
     description: "First Meetup",
   },
   {
-    id: 1,
+    id: 3,
     title: "First Meetup",
     image: "https://picsum.photos/200",
     address: "New York 123 ",
     description: "First Meetup",
   },
   {
-    id: 1,
+    id: 4,
     title: "First Meetup",
     image: "https://picsum.photos/200",
     address: "New York 123 ",
     description: "First Meetup",
   },
 ];
-const HomePage = () => {
-  return <MeetupList meetups={DUMMY_MEETUPS} />;
+const HomePage = (props) => {
+  console.log(props);
+  return <MeetupList meetups={props.meetups} />;
 };
 
+export async function getStaticProps() {
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS,
+      revalidate: 1,
+    },
+  };
+}
 export default HomePage;
